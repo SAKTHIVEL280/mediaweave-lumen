@@ -17,7 +17,7 @@ export function Features() {
   ];
 
   return (
-    <section className="section-padding bg-muted/50">
+    <section id="features" className="section-padding bg-muted/50">
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
           Why Choose MediaWeave?

@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import TextToMedia from "./pages/TextToMedia";
 import AudioToMedia from "./pages/AudioToMedia";
 import VideoToMedia from "./pages/VideoToMedia";
+import Pricing from "./pages/Pricing";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/text-to-media" element={<TextToMedia />} />
             <Route path="/audio-to-media" element={<AudioToMedia />} />
             <Route path="/video-to-media" element={<VideoToMedia />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -1,9 +1,26 @@
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToFeatures = () => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'features' } });
+    } else {
+      document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToAbout = () => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'about' } });
+    } else {
+      document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-lg border-b">
@@ -14,9 +31,9 @@ export function Navbar() {
           </a>
         </div>
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" className="text-foreground">Features</Button>
-          <Button variant="ghost" className="text-foreground">Pricing</Button>
-          <Button variant="ghost" className="text-foreground">About</Button>
+          <Button variant="ghost" className="text-foreground" onClick={scrollToFeatures}>Features</Button>
+          <Button variant="ghost" className="text-foreground" onClick={() => navigate("/pricing")}>Pricing</Button>
+          <Button variant="ghost" className="text-foreground" onClick={scrollToAbout}>About</Button>
           <ThemeToggle />
           <Button 
             variant="default" 
