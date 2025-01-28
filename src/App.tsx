@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+import TextToMedia from "./pages/TextToMedia";
+import AudioToMedia from "./pages/AudioToMedia";
+import VideoToMedia from "./pages/VideoToMedia";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +22,10 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/text-to-media" element={<TextToMedia />} />
+            <Route path="/audio-to-media" element={<AudioToMedia />} />
+            <Route path="/video-to-media" element={<VideoToMedia />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
