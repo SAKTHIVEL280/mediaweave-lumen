@@ -4,9 +4,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,7 +32,15 @@ const Auth = () => {
   };
 
   return (
-    <div className="container flex items-center justify-center min-h-screen py-8">
+    <div className="container relative flex items-center justify-center min-h-screen py-8">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute left-4 top-4 md:left-8 md:top-8"
+        onClick={() => navigate("/")}
+      >
+        <ArrowLeft className="h-4 w-4" />
+      </Button>
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Welcome to MediaWeave</CardTitle>
