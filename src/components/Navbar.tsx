@@ -1,7 +1,10 @@
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -15,7 +18,13 @@ export function Navbar() {
           <Button variant="ghost" className="text-foreground">Pricing</Button>
           <Button variant="ghost" className="text-foreground">About</Button>
           <ThemeToggle />
-          <Button variant="default" className="bg-primary hover:bg-primary/90">Sign In</Button>
+          <Button 
+            variant="default" 
+            className="bg-primary hover:bg-primary/90"
+            onClick={() => navigate("/auth")}
+          >
+            Sign In
+          </Button>
         </div>
       </div>
     </nav>

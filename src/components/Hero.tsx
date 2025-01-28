@@ -1,7 +1,16 @@
 import { ArrowRight, Video, AudioLines, FileText } from "lucide-react";
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 export function Hero() {
+  const navigate = useNavigate();
+
+  const features = [
+    { icon: FileText, title: "Text to Video & Audio", path: "/text-to-media", delay: "0.6s" },
+    { icon: AudioLines, title: "Audio to Text & Video", path: "/audio-to-media", delay: "0.8s" },
+    { icon: Video, title: "Video to Text & Audio", path: "/video-to-media", delay: "1s" },
+  ];
+
   return (
     <section className="pt-32 pb-20 px-4 md:px-6 lg:px-8">
       <div className="container mx-auto text-center">
@@ -12,11 +21,7 @@ export function Hero() {
           Transform your content seamlessly between text, video, and audio using advanced AI technology.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-[fadeIn_1s_ease-in_0.4s]">
-          {[
-            { icon: FileText, title: "Text to Video & Audio", delay: "0.6s" },
-            { icon: AudioLines, title: "Audio to Text & Video", delay: "0.8s" },
-            { icon: Video, title: "Video to Text & Audio", delay: "1s" },
-          ].map((feature, index) => (
+          {features.map((feature, index) => (
             <div
               key={index}
               className="glass p-6 rounded-xl hover:scale-105 transition-transform cursor-pointer"
@@ -24,7 +29,11 @@ export function Hero() {
             >
               <feature.icon className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <Button variant="ghost" className="group">
+              <Button 
+                variant="ghost" 
+                className="group"
+                onClick={() => navigate(feature.path)}
+              >
                 Try Now
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -32,10 +41,18 @@ export function Hero() {
           ))}
         </div>
         <div className="flex justify-center space-x-4 animate-[fadeIn_1s_ease-in_1.2s]">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90"
+            onClick={() => navigate("/text-to-media")}
+          >
             Try It Now
           </Button>
-          <Button size="lg" variant="outline">
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={() => navigate("/auth")}
+          >
             Sign Up Free
           </Button>
         </div>
